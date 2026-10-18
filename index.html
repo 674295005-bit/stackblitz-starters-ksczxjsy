@@ -24,24 +24,23 @@
 
   <h2>Google Login & Gemini AI Chatbot</h2>
 
-  <!-- ส่วนที่ 1: ปุ่ม Google Login -->
+  <!-- ส่วนที่ 1: ปุ่ม Login -->
   <div id="login-section">
     <p>กรุณาล็อกอินด้วย Google เพื่อเริ่มใช้งาน Chatbot</p>
-    <div id="g_id_onload"
-    data-client_id="YOUR_GOOGLE_CLIENT_ID"
-    data-callback="handleCredentialResponse">
-    </div>
-    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with" data-size="large"></div>
+    <button onclick="handleDemoLogin()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #4285f4; color: white; border: none; border-radius: 4px;">
+      ลงชื่อเข้าใช้ด้วย Google (Demo)
+    </button>
   </div>
 
   <!-- ส่วนที่ 2: หน้าแชต Gemini AI -->
-  <div id="chat-section">
-    <p>สวัสดีครับคุณ <b id="user-name"></b> 👋</p>
+  <div id="chat-section" style="display:none;">
+    <p>สวัสดีครับคุณ <b id="user-name">อาจารย์</b> 👋</p>
     <div id="chat-box"></div>
     <div class="input-group">
-      <input type="text" id="user-input" placeholder="พิมพ์ข้อความถาม Gemini...">
+      <input type="text" id="user-input" placeholder="พิมพ์ข้อความถาม Gemini..." />
       <button onclick="sendMessage()">ส่ง</button>
     </div>
+  </div>
   </div>
 
   <script>
@@ -74,6 +73,10 @@
 
       chatBox.innerHTML += <div class="bot-msg"><b>Gemini:</b> ได้รับข้อความ "${message}" แล้วครับ (ระบบเชื่อมต่อสำเร็จ)</div>;
       chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    function handleDemoLogin() {
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('chat-section').style.display = 'block';
     }
   </script>
 </body>
